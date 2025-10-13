@@ -41,7 +41,7 @@ public:
 //Metodos:
     void agregarProducto( );
     void mostrarProductos( );
-    void calcularTotalIventario();
+    void calcularTotalInventario();
 
     void realizarVenta();
     void registrarCliente();

@@ -34,7 +34,7 @@ void mostrarMenuTienda(Tienda &tiendaMenu)
      }
 
      case 3: {
-        tiendaMenu.calcularTotalIventario();
+        tiendaMenu.calcularTotalInventario();
         break;
      }
 

@@ -184,7 +184,7 @@ void Tienda::mostrarProductos() {
 }
 
 
-void Tienda::calcularTotalIventario() {
+void Tienda::calcularTotalInventario() {
     double totalPrecio = 0;
     double totalCantidadProductos = 0;
     cout << "************************+"<< endl;
@@ -304,7 +304,9 @@ void Tienda::realizarVenta() {
         productoEncontrado -> ajustarCantidad(-cantidad);
         cout << "\nProducto agregado a la venta. " << endl;
         nuevaVenta->mostrarProductos();
+
         totalVentas = nuevaVenta->totalVentas();
+        cout << std::fixed <<std::setprecision(2);
         cout << "-------- Total de las ventas: $" << totalVentas <<endl;
 
         cout << "Desea agregar otro producto? (s/n): ";
@@ -341,12 +343,12 @@ void Tienda::llegadaProductos() {
     string codigo;
     char continuar = 's';
     int cantidad;
-    mostrarProductos();
     Producto * productoEncontrado = nullptr;
 
 
 
     while ( continuar == 's' || continuar == 'S') {
+        mostrarProductos();
         cout << "\n-------------Ingrese el codigo del producto: " ;
         cin.ignore();
         getline( cin, codigo);
@@ -366,7 +368,7 @@ void Tienda::llegadaProductos() {
         cin >> cantidad;
 
         if ( cantidad <=0 ) {
-            cout << "Cantidad invalida par agregar. " << endl;
+            cout << "Cantidad invalida para agregar. " << endl;
             continue;
         }
         else {
@@ -374,11 +376,11 @@ void Tienda::llegadaProductos() {
         }
 
         cout << "\nCantidad agregada al inventario. " << endl;
+        //Mostrar los nuevos datos del producto;
+        productoEncontrado->mostrarDatos();
         cout << "Desea aumentar el inventario de otor producto? (s/n): ";
         cin >> continuar;
     }
 
-    //Mostrar los nuevos datos del producto;
-    productoEncontrado->mostrarDatos();
 
 }

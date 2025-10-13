@@ -52,6 +52,7 @@ string Cliente::getId() {
 
 //Metodos:
 void Cliente::mostrarDatos() {
+    //double Total = 0; <----- otra forma de calcular el total de la venta.
     cout << "\n=======Datos del Cliente:=========" << endl;
     cout << "Nombre: " << nombre << endl;
     cout << "ID: " << id << endl;
@@ -66,9 +67,13 @@ void Cliente::mostrarDatos() {
             if (ventas[i] != NULL) {
                 cout << "\n >>> Compra #" << i+1 << " <<<< " << endl;
                 ventas[i]->mostrarDatos();
+                //Total += ventas[i]->totalVentas();
             }
         }
     }
+    //cout << std::fixed <<std::setprecision(2);
+    //cout << "Total de compras del cliente: " << Total << endl;
+
     cout << "================================" << endl;
 }
 

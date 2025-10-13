@@ -42,12 +42,14 @@ void Venta::mostrarDatos() {
         cout << "Cantidades: " << cantidades[i] << endl;
         cout << "Precio Unitario: $" << precios[i] << endl;
         subtotal = cantidades[i] * precios[i];
+        cout << std::fixed <<std::setprecision(2);
         cout << "Subtotal: $" << subtotal << endl;
         cout << "---------------" << endl;
         total += subtotal;
 
     }
-    cout << "Total de la venta: $" << total << endl;
+    cout << std::fixed <<std::setprecision(2);
+    cout << "Total de las compras: $" << total << endl;
 
 
 }
