@@ -384,3 +384,18 @@ void Tienda::llegadaProductos() {
 
 
 }
+
+void Tienda::mostrarTotalVentasGlobal() {
+    double totalVentas = 0;
+
+    for (int i = 0; i < clientes.size(); i++) {
+        totalVentas += clientes[i]->calcularTotalCompras();
+    }
+
+    cout << "\n========================================" << endl;
+    cout << "Total de ventas realizadas en el sistema" << endl;
+    cout << "========================================" << endl;
+    cout << std::fixed << std::setprecision(2);
+    cout << "-> Total: $" << totalVentas << endl;
+    cout << "========================================\n" << endl;
+}

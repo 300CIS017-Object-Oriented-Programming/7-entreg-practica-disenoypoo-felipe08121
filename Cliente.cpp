@@ -84,3 +84,13 @@ void Cliente::agregarVenta( Venta * venta) {
         ventas.push_back(venta);
     }
 }
+
+double Cliente::calcularTotalCompras() {
+    double total = 0;
+    for (int i = 0; i < ventas.size(); i++) {
+        if (ventas[i]!=NULL) {
+            total += ventas[i]->totalVentas();
+        }
+    }
+    return total;
+}

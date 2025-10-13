@@ -10,6 +10,7 @@ classDiagram
     + void mostrar/productos/clientes/ventas()
     + void llegadaProductos( )
     + void calcularTotalInventario()
+    + void mostrarTotalVentasGlobal()
 
 
    }
@@ -47,6 +48,7 @@ classDiagram
         + gets/sets()
         + void mostrarDatos()
         + void agregarVenta( Venta * venta)
+        + void calcularTotalCompras()
         - String nombre
         - String ID
 

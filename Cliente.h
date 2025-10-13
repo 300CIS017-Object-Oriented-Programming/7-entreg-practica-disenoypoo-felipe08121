@@ -45,6 +45,7 @@ public:
 // metodos:
     void mostrarDatos();
     void agregarVenta( Venta * venta);
+    double calcularTotalCompras();
 
 
 };

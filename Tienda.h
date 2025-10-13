@@ -49,6 +49,7 @@ public:
     void mostrarClientes();
     void mostrarVentas();
     void llegadaProductos();
+    void mostrarTotalVentasGlobal();
 
 
 };
