@@ -5,7 +5,7 @@ classDiagram
     - vector productos
     - vector clientes 
     + void registrarProductos()
-    + void realizarVenta( long cantidades, double precios)
+    + void realizarVenta( )
     + void registrarCliente()
     + void mostrar/productos/clientes/ventas()
     + void llegadaProductos( )
