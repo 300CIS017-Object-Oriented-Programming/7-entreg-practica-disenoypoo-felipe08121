@@ -23,15 +23,15 @@ class Venta {
 private:
 
     vector<Producto *> productos;
-    vector< long> cantidades;
-    vector< double> precios;
+    vector<long> cantidades;
+    vector<double> precios;
 
 
 public:
 
 // Contructores y destructores:
     Venta() ;
-    ~Venta() = default  ;
+    virtual ~Venta() ;
 
 // Metodos:
 void mostrarDatos();

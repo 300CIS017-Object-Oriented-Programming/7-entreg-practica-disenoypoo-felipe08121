@@ -5,40 +5,137 @@
 #include "Tienda.h"
 
 Tienda:: Tienda() {
+    cout << "\n====== ====================================== =====" << endl;
    cout << "Se ingresa al constructor de la tienda. " << endl;
-   inicializarProductos();
-   cout << "Termina la inicializacion." << endl;
+    cout << "====== Inicializando el sistema de la tienda. =====" << endl;
+    cout << "====== ====================================== =====" << endl;
+   inicializarDatos();
+   cout << "\n===== =========Termina la inicializacion.  ====== =====" << endl;
+    cout << "====== ====================================== =====\n" << endl;
 
 }
+
+void Tienda::inicializarDatos() {
+    cout << "\n[1/2] Inicializando productos..." << endl;
+    inicializarProductos();
+
+    cout << "\n[2/2] Inicializando clientes..." << endl;
+    inicializarClientes();
+
+}
+
 
 //Constructores y destructores:
 void Tienda::inicializarProductos() {
+
+
     Producto * producto1 = new Producto();
+    producto1 -> setNombreProducto("Shampoo Organico");
+    producto1 -> setCodigoProducto("SH001");
+    producto1 -> setCantidadProductos(50);
+    producto1 -> setPrecioProducto(15000);
+
     Producto * producto2 = new Producto();
+    producto2 -> setNombreProducto("Jabon Artesanal");
+    producto2 -> setCodigoProducto("JA001");
+    producto2 -> setCantidadProductos(100);
+    producto2 -> setPrecioProducto(5000);
 
-    producto1 -> setNombreProducto("Margaritas");
-    producto1 -> setCodigoProducto("Milo");
-    producto1 -> setCantidadProductos(30);
-    producto1 -> setPrecioProducto(8000);
+    Producto * producto3 = new Producto();
+    producto3 -> setNombreProducto("Cafe Organico");
+    producto3 -> setCodigoProducto("CAF001");
+    producto3 -> setCantidadProductos(75);
+    producto3 -> setPrecioProducto(7500);
 
-    producto2 -> setNombreProducto("Coca Cola ");
-    producto2 -> setCodigoProducto("zero");
-    producto2 -> setCantidadProductos(80);
-    producto2 -> setPrecioProducto(3000);
+    Producto * producto4 = new Producto();
+    producto4 -> setNombreProducto("Pastillas Naturales para Dormir");
+    producto4 -> setCodigoProducto("PAST007");
+    producto4 -> setCantidadProductos(40);
+    producto4->setPrecioProducto(25000);
+
+    Producto * producto5 = new Producto();
+    producto5 -> setNombreProducto("Hierba de Gatos");
+    producto5 -> setCodigoProducto("HIL001");
+    producto5 -> setCantidadProductos(30);
+    producto5 -> setPrecioProducto(8000);
 
     productos.push_back(producto1);
     productos.push_back(producto2);
+    productos.push_back(producto3);
+    productos.push_back(producto4);
+    productos.push_back(producto5);
+
+    cout << "     -> " << productos.size() << " productos cargados. "<< endl;
 
 }
 
+void Tienda::inicializarClientes() {
+
+    //----> Cliente 1 :
+
+    Cliente * cliente1 = new Cliente();
+    cliente1->setNombre( "Juan Felipe Perafan" );
+    cliente1->setId("1002213406");
+
+    // Venta 1 del Cliente 1
+    Venta * venta1_c1 = new Venta();
+    venta1_c1 -> agregarLinea(productos[0], 2, productos[0]->getPrecioProducto());
+    venta1_c1 -> agregarLinea(productos[1], 3, productos[1]->getPrecioProducto());
+    cliente1->agregarVenta(venta1_c1);
+
+    //Venta 2 del Cliente 1
+    Venta * venta2_c1 = new Venta();
+    venta2_c1 ->agregarLinea(productos[3], 5, productos[3]->getPrecioProducto());
+    cliente1->agregarVenta(venta2_c1);
+
+    clientes.push_back(cliente1);
+
+    //-----> Cliente 2
+    Cliente * cliente2 = new Cliente();
+    cliente2->setNombre("John-117");
+    cliente2->setId("SPARTAN-117");
+
+    // Venta 1 del cliente 2
+    Venta * venta1_c2 = new Venta();
+    venta1_c2 -> agregarLinea(productos[2], 1, productos[2]->getPrecioProducto());
+    venta1_c2 -> agregarLinea(productos[4], 2, productos[4]->getPrecioProducto());
+    cliente2->agregarVenta(venta1_c2);
+
+    clientes.push_back(cliente2);
+
+    // ---> Cliente 3
+    Cliente * cliente3 = new Cliente();
+    cliente3->setNombre("Hu Tao");
+    cliente3->setId("Funeraria el Camino");
+
+    Venta * venta1_c3 = new Venta();
+    venta1_c3 -> agregarLinea(productos[1], 10, productos[1]->getPrecioProducto());
+    venta1_c3 -> agregarLinea(productos[3], 3, productos[3]->getPrecioProducto());
+    cliente3->agregarVenta(venta1_c3);
+
+    clientes.push_back(cliente3);
+
+    cout << "     -> " << clientes.size() << " clientes cargados con historial de compras." << endl;
+}
+
+
 Tienda::~Tienda() {
     for (int i=0; i < productos.size(); i++) {
-        delete productos[i];
+        if (productos[i] != NULL) {
+            delete productos[i];
+            productos[i] = NULL;
+        }
     }
 
+    productos.clear();
+
     for (int i=0; i < clientes.size(); i++) {
-        delete clientes[i];
+        if (clientes[i] != NULL) {
+            delete clientes[i];
+            clientes[i] = NULL;
+        }
     }
+    clientes.clear();
 
     cout << "Se llama al destructor, se elimina todo y se termina " << endl;
 }
@@ -56,7 +153,6 @@ void Tienda::agregarProducto() {
     getline( cin, nombre);
 
     cout << "Ingrese el codigo del producto: " << endl;
-    cin.ignore();
     getline( cin, codigo);
 
     cout << "ingrese la cantidad del producto: "<< endl;
@@ -93,9 +189,9 @@ void Tienda::calcularTotalIventario() {
     double totalCantidadProductos = 0;
     cout << "************************+"<< endl;
     for (int i = 0; i < productos.size(); i++) {
-        cout << "Detalles producto: "<< endl;
+        cout << "Detalles del producto: "<< endl;
         cout << "nombre: "<< productos[i] -> getNombreProducto() << endl;
-        cout << "precio: "<< productos[i] -> getPrecioProducto() << endl;
+        cout << "precio: $"<< productos[i] -> getPrecioProducto() << endl;
         cout << "cantidad: " << productos[i] -> getCantidadProductos() << endl;
         cout << endl;
         totalPrecio = totalPrecio + ( (productos[i] -> getPrecioProducto() ) * productos[i] -> getCantidadProductos() );
@@ -119,7 +215,6 @@ void Tienda::registrarCliente() {
     cin.ignore();
     getline( cin, nombre);
     cout << "Ingrese el codigo del cliente: " << endl;
-    cin.ignore();
     getline( cin, id);
 
     Cliente *clienteTemporal = new Cliente();
@@ -135,6 +230,7 @@ void Tienda::registrarCliente() {
 
 void Tienda::realizarVenta() {
      int opcionCliente;
+     double totalVentas = 0;
      char continuar = 's';
      string codigo;
      int cantidad;
@@ -170,8 +266,7 @@ void Tienda::realizarVenta() {
     while (continuar == 's' || continuar == 'S') {
         mostrarProductos();
 
-        cout << "---- Ingrese el codigo del prodcuto: " << endl;
-        cin.ignore();
+        cout << "---- Ingrese el codigo del producto: " << endl;
         getline( cin, codigo);
 
         Producto * productoEncontrado = nullptr;
@@ -208,6 +303,10 @@ void Tienda::realizarVenta() {
 
         productoEncontrado -> ajustarCantidad(-cantidad);
         cout << "\nProducto agregado a la venta. " << endl;
+        nuevaVenta->mostrarProductos();
+        totalVentas = nuevaVenta->totalVentas();
+        cout << "-------- Total de las ventas: $" << totalVentas <<endl;
+
         cout << "Desea agregar otro producto? (s/n): ";
         cin >> continuar;
 

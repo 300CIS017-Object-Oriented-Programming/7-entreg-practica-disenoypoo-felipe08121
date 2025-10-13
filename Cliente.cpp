@@ -12,17 +12,30 @@ Cliente::Cliente() {
     ventas = {};
 }
 
+Cliente::Cliente(string nombre, string id) {
+    this->nombre = nombre;
+    this->id = id;
+    ventas = {};
+}
+
+
 Cliente::~Cliente() {
+
     for (int i = 0; i < ventas.size(); i++) {
-        delete ventas[i];
+        if (ventas[i] != NULL) {
+            delete ventas[i];
+            ventas[i] = NULL;
+        }
     }
+
+    ventas.clear();
 
 }
 
 //getters y setters:
 
 void Cliente::setNombre(string nombre) {
-    Cliente::nombre = nombre;
+    this->nombre = nombre;
 }
 string Cliente::getNombre() {
     return Cliente::nombre;
@@ -30,7 +43,7 @@ string Cliente::getNombre() {
 
 
 void Cliente::setId(string id) {
-    Cliente::id = id;
+    this->id = id;
 }
 string Cliente::getId() {
     return Cliente::id;
@@ -40,8 +53,8 @@ string Cliente::getId() {
 //Metodos:
 void Cliente::mostrarDatos() {
     cout << "\n=======Datos del Cliente:=========" << endl;
-    cout << "nombre: " << nombre << endl;
-    cout << "id: " << id << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "ID: " << id << endl;
     cout << "Numero de compras del cliente: " << ventas.size() << endl;
 
     if ( ventas.empty()) {

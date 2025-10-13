@@ -28,8 +28,9 @@ private:
     vector<Producto *> productos;
     vector<Cliente *> clientes;
 
+    void inicializarClientes();
     void inicializarProductos();
-
+    void inicializarDatos();
 
 public:
 //Constructores y Destructores:

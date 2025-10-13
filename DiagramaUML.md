@@ -35,7 +35,7 @@ classDiagram
         - vector cantidades
         - vector precios
        
-        + double totalVenta()
+        + double totalVentas()
         + void mostrarDatos()
         + void agregarLinea( Producto *, int cantidades, double precios)
         + void mostrarProductos()
@@ -46,7 +46,7 @@ classDiagram
         
         + gets/sets()
         + void mostrarDatos()
-        + void agregarVentas( Venta * venta)
+        + void agregarVenta( Venta * venta)
         - String nombre
         - String ID
 

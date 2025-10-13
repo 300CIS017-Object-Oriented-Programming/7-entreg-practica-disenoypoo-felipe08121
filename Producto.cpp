@@ -15,17 +15,17 @@ Producto::Producto() {
 Producto::Producto( string nombreProducto, string codigoProducto,
         long cantidadProductos, double precioProducto) {
 
-    Producto::nombreProducto = nombreProducto;
-    Producto::codigoProducto = codigoProducto;
-    Producto::precioProducto = precioProducto;
-    Producto::cantidadProductos = cantidadProductos;
+    this->nombreProducto = nombreProducto;
+    this->codigoProducto = codigoProducto;
+    this->precioProducto = precioProducto;
+    this->cantidadProductos = cantidadProductos;
 
 }
 
 // Sets y getters:
 
 void Producto::setCodigoProducto(string codigoProducto) {
-    Producto::codigoProducto = codigoProducto;
+    this->codigoProducto = codigoProducto;
 }
 string Producto::getCodigoProducto() {
     return Producto::codigoProducto;
@@ -33,7 +33,7 @@ string Producto::getCodigoProducto() {
 
 
 void Producto::setNombreProducto(string nombreProducto) {
-    Producto::nombreProducto = nombreProducto;
+    this->nombreProducto = nombreProducto;
 }
 string Producto::getNombreProducto() {
     return Producto::nombreProducto;
@@ -41,7 +41,7 @@ string Producto::getNombreProducto() {
 
 
 void Producto::setPrecioProducto(double precioProducto) {
-    Producto::precioProducto = precioProducto;
+    this->precioProducto = precioProducto;
 }
 double Producto::getPrecioProducto() {
     return precioProducto;
@@ -49,7 +49,7 @@ double Producto::getPrecioProducto() {
 
 
 void Producto::setCantidadProductos(long cantidadProductos) {
-    Producto::cantidadProductos = cantidadProductos;
+    this->cantidadProductos = cantidadProductos;
 }
 long Producto::getCantidadProductos() {
     return cantidadProductos;
@@ -58,14 +58,14 @@ long Producto::getCantidadProductos() {
 // Metodos:
 
 void Producto::ajustarCantidad(int cantidad) {
-    Producto::cantidadProductos += cantidad;
+    this->cantidadProductos += cantidad;
 }
 
 void Producto::mostrarDatos() {
 
      cout << "El nombre del producto es: " << nombreProducto << endl;
      cout << "El codigo del producto es: " << codigoProducto << endl;
-     cout << "El precio del producto es: " << precioProducto << endl;
+     cout << "El precio del producto es: $" << precioProducto << endl;
      cout << "La cantidad en stock es: " << cantidadProductos << endl;
      cout << endl;
 

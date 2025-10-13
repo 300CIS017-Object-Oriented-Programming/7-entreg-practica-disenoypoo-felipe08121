@@ -12,6 +12,13 @@ Venta::Venta() {
     precios = {};
 }
 
+Venta::~Venta() {
+    // No eliminamos productos porque pertenecen a Tienda
+    // Solo limpiamos las referencias
+    productos.clear();
+    cantidades.clear();
+    precios.clear();
+}
 //Metodos:
 
 void Venta::agregarLinea(Producto *producto, int cantidad, double precio) {
@@ -58,5 +65,6 @@ void Venta::mostrarProductos() {
     for ( int i = 0; i < productos.size(); i++ ) {
         cout << "-> " << productos[i]->getNombreProducto() << endl;
         cout << "Cantidades: " << cantidades[i] << endl;
+        cout << "--------------------------" << endl;
     }
 }

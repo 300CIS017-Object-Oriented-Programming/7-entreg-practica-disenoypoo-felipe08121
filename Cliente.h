@@ -32,6 +32,7 @@ private:
 public:
 //constructores y destructores:
     Cliente();
+    Cliente(string nombre, string id);
     virtual ~Cliente() ;
 
 // sets y gets:
