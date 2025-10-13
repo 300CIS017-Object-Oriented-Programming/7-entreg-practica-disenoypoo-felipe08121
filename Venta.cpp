@@ -49,7 +49,7 @@ void Venta::mostrarDatos() {
 
     }
     cout << std::fixed <<std::setprecision(2);
-    cout << "Total de las compras: $" << total << endl;
+    cout << "---> Total en esta compra: $" << total << endl;
 
 
 }
