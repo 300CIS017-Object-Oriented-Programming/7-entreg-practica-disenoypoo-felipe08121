@@ -5,68 +5,73 @@
 #include "Venta.h"
 
 
-// Constructor:
+#include "Venta.h"
+
+// Constructor
 Venta::Venta() {
-    productos = {};
-    cantidades = {};
-    precios = {};
+    productosVendidos = {};
 }
 
 Venta::~Venta() {
-    // No eliminamos productos porque pertenecen a Tienda
-    // Solo limpiamos las referencias
-    productos.clear();
-    cantidades.clear();
-    precios.clear();
+    // ⭐ AHORA SÍ eliminamos ProductoVendido porque los creamos nosotros
+    for (int i = 0; i < productosVendidos.size(); i++) {
+        if (productosVendidos[i] != nullptr) {
+            delete productosVendidos[i];
+            productosVendidos[i] = nullptr;
+        }
+    }
+    productosVendidos.clear();
 }
-//Metodos:
 
-void Venta::agregarLinea(Producto *producto, int cantidad, double precio) {
-
-    if ( !producto  || cantidad <= 0) {
+// Métodos
+void Venta::agregarLinea(Producto* producto, int cantidad, double precio) {
+    if (!producto || cantidad <= 0) {
         return;
     }
 
-    productos.push_back( producto );
-    cantidades.push_back(cantidad);
-    precios.push_back(precio);
+    // ⭐ CREAMOS un objeto ProductoVendido
+    ProductoVendido* productoVendido = new ProductoVendido(producto, cantidad, precio);
+    productosVendidos.push_back(productoVendido);
 }
 
 void Venta::mostrarDatos() {
     cout << " ===== Detalle de la venta: ====== " << endl;
     double total = 0;
-    double subtotal = 0;
 
-    for (int i = 0; i < productos.size(); i++) {
-        cout << "Producto: " << productos[i]->getNombreProducto() << endl;
-        cout << "Cantidades: " << cantidades[i] << endl;
-        cout << "Precio Unitario: $" << precios[i] << endl;
-        subtotal = cantidades[i] * precios[i];
-        cout << std::fixed <<std::setprecision(2);
-        cout << "Subtotal: $" << subtotal << endl;
-        cout << "---------------" << endl;
-        total += subtotal;
-
+    // ⭐ USAMOS el método mostrarDatos() de ProductoVendido
+    for (int i = 0; i < productosVendidos.size(); i++) {
+        if (productosVendidos[i] != nullptr) {
+            productosVendidos[i]->mostrarDatos();
+            total += productosVendidos[i]->calcularSubtotal();
+        }
     }
-    cout << std::fixed <<std::setprecision(2);
+
+    cout << std::fixed << std::setprecision(2);
     cout << "---> Total en esta compra: $" << total << endl;
-
-
 }
 
 double Venta::totalVentas() {
     double total = 0;
-    for (int i = 0; i < cantidades.size(); i++) {
-        total += cantidades[i] * precios[i];
+    // ⭐ USAMOS el método calcularSubtotal() de ProductoVendido
+    for (int i = 0; i < productosVendidos.size(); i++) {
+        if (productosVendidos[i] != nullptr) {
+            total += productosVendidos[i]->calcularSubtotal();
+        }
     }
     return total;
 }
 
 void Venta::mostrarProductos() {
     cout << " ------- Productos en esta Venta: " << endl;
-    for ( int i = 0; i < productos.size(); i++ ) {
-        cout << "-> " << productos[i]->getNombreProducto() << endl;
-        cout << "Cantidades: " << cantidades[i] << endl;
-        cout << "--------------------------" << endl;
+    // ⭐ ACCEDEMOS al producto a través de ProductoVendido
+    for (int i = 0; i < productosVendidos.size(); i++) {
+        if (productosVendidos[i] != nullptr) {
+            Producto* prod = productosVendidos[i]->getProducto();
+            if (prod != nullptr) {
+                cout << "-> " << prod->getNombreProducto() << endl;
+                cout << "Cantidad: " << productosVendidos[i]->getCantidad() << endl;
+                cout << "--------------------------" << endl;
+            }
+        }
     }
 }

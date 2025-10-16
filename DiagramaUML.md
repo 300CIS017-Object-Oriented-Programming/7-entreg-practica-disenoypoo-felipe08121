@@ -16,9 +16,6 @@ classDiagram
    }
 
     class Producto{
-        
-
-
         - long cantidadProducto
         - double precioProducto
         - String nombreProducto
@@ -26,15 +23,19 @@ classDiagram
         + void ajustarCantidad( int cantidad) 
         + gets/sets()
         + void mostrarDatos()
-        
-        
+    }
 
+    class ProductoVendido{
+        - Producto* producto
+        - int cantidad
+        - double precioUnitario
+        + double calcularSubtotal()
+        + gets/sets()
+        + void mostrarDatos()
     }
 
     class Venta {
-        - vector productos
-        - vector cantidades
-        - vector precios
+        - vector productosVendidos
        
         + double totalVentas()
         + void mostrarDatos()
@@ -44,13 +45,13 @@ classDiagram
 
     class Cliente{
         - vector ventas
+        - String nombre
+        - String ID
         
         + gets/sets()
         + void mostrarDatos()
         + void agregarVenta( Venta * venta)
         + void calcularTotalCompras()
-        - String nombre
-        - String ID
 
     }
 
@@ -63,7 +64,7 @@ classDiagram
      Tienda "Tiene" --o Cliente
      Tienda "Tiene" --o Producto
      Cliente "Tiene" --o Venta
-     Venta "Tiene" --o Producto
-
+     Venta "Contiene" --o ProductoVendido
+     ProductoVendido "Referencia" --> Producto
 
 ```

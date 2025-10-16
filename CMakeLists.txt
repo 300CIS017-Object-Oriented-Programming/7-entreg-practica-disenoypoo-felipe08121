@@ -11,4 +11,6 @@ add_executable(POOSistemaGestionVentas main.cpp
         Venta.cpp
         Venta.h
         Cliente.cpp
-        Cliente.h)
+        Cliente.h
+        ProductoVendido.cpp
+        ProductoVendido.h)

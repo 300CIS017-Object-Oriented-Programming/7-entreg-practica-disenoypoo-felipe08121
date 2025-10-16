@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include "Producto.h"
+#include "ProductoVendido.h"
 
 using std::cout;
 using std::endl;
@@ -16,29 +17,21 @@ using std::getline;
 using std::string;
 using std::cin;
 using std::vector;
-using std::getline;
-
 
 class Venta {
 private:
-
-    vector<Producto *> productos;
-    vector<long> cantidades;
-    vector<double> precios;
-
+    vector<ProductoVendido*> productosVendidos;  // ⭐ UN SOLO VECTOR en lugar de 3
 
 public:
+    // Constructores y destructores
+    Venta();
+    virtual ~Venta();
 
-// Contructores y destructores:
-    Venta() ;
-    virtual ~Venta() ;
-
-// Metodos:
-void mostrarDatos();
-void agregarLinea( Producto * producto, int cantidades, double precios);
-void mostrarProductos();
-double totalVentas();
-
+    // Métodos
+    void mostrarDatos();
+    void agregarLinea(Producto* producto, int cantidad, double precio);
+    void mostrarProductos();
+    double totalVentas();
 };
 
 
