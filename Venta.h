@@ -20,7 +20,7 @@ using std::vector;
 
 class Venta {
 private:
-    vector<ProductoVendido*> productosVendidos;  // ⭐ UN SOLO VECTOR en lugar de 3
+    vector<ProductoVendido*> productosVendidos;
 
 public:
     // Constructores y destructores
