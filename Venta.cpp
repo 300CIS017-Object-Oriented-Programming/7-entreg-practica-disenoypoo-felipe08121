@@ -9,10 +9,12 @@
 
 // Constructor
 Venta::Venta() {
+    //Creo el objeto vacio
     productosVendidos = {};
 }
 
 Venta::~Venta() {
+    // Modifico el destructor para borrar los Productos Vendidos
 
     for (int i = 0; i < productosVendidos.size(); i++) {
         if (productosVendidos[i] != nullptr) {
@@ -29,6 +31,7 @@ void Venta::agregarLinea(Producto* producto, int cantidad, double precio) {
         return;
     }
 
+    // Reutilizo el agregarLinea de Venta
 
     ProductoVendido* productoVendido = new ProductoVendido(producto, cantidad, precio);
     productosVendidos.push_back(productoVendido);
@@ -37,7 +40,7 @@ void Venta::agregarLinea(Producto* producto, int cantidad, double precio) {
 void Venta::mostrarDatos() {
     cout << " ===== Detalle de la venta: ====== " << endl;
     double total = 0;
-
+   //Uso el mostrar datos de ProductoVendido
 
     for (int i = 0; i < productosVendidos.size(); i++) {
         if (productosVendidos[i] != nullptr) {
@@ -52,7 +55,7 @@ void Venta::mostrarDatos() {
 
 double Venta::totalVentas() {
     double total = 0;
-
+    // lo mismo de arriba.
     for (int i = 0; i < productosVendidos.size(); i++) {
         if (productosVendidos[i] != nullptr) {
             total += productosVendidos[i]->calcularSubtotal();
@@ -63,7 +66,7 @@ double Venta::totalVentas() {
 
 void Venta::mostrarProductos() {
     cout << " ------- Productos en esta Venta: " << endl;
-
+    // lo mismo
     for (int i = 0; i < productosVendidos.size(); i++) {
         if (productosVendidos[i] != nullptr) {
             Producto* prod = productosVendidos[i]->getProducto();

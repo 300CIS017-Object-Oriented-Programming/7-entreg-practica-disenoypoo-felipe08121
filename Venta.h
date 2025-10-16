@@ -32,6 +32,7 @@ public:
     void agregarLinea(Producto* producto, int cantidad, double precio);
     void mostrarProductos();
     double totalVentas();
+    //Movi algunos metodos
 };
 
 

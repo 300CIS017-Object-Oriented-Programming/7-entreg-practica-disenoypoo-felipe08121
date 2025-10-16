@@ -4,6 +4,8 @@
 
 #include "ProductoVendido.h"
 
+//Constructores y Destructores:
+
 ProductoVendido::ProductoVendido() {
     producto = nullptr;
     cantidad = 0;
@@ -56,6 +58,8 @@ double ProductoVendido::calcularSubtotal() {
 }
 
 void ProductoVendido::mostrarDatos() {
+    // Muestro los atributos del objeto.
+
     if (producto != nullptr) {
         cout << "Producto: " << producto->getNombreProducto() << endl;
         cout << "Cantidad: " << cantidad << endl;
