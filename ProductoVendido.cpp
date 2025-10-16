@@ -28,7 +28,7 @@ void ProductoVendido::setProducto(Producto* producto) {
 }
 
 Producto* ProductoVendido::getProducto() {
-    return ProductoVendido::producto;
+    return producto;
 }
 
 
@@ -37,7 +37,7 @@ void ProductoVendido::setCantidad(int cantidad) {
 }
 
 int ProductoVendido::getCantidad() {
-    return ProductoVendido::cantidad;
+    return cantidad;
 }
 
 
@@ -46,7 +46,7 @@ void ProductoVendido::setPrecioUnitario(double precioUnitario) {
 }
 
 double ProductoVendido::getPrecioUnitario() {
-    return ProductoVendido::precioUnitario;
+    return precioUnitario;
 }
 
 // Métodos:
