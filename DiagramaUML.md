@@ -11,7 +11,7 @@ classDiagram
     + void llegadaProductos( )
     + void calcularTotalInventario()
     + void mostrarTotalVentasGlobal()
-
+    + void buscarClientePorCodigo()
 
    }
 

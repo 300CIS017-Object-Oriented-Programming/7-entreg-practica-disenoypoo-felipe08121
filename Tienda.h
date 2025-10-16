@@ -51,6 +51,8 @@ public:
     void llegadaProductos();
     void mostrarTotalVentasGlobal();
 
+    void buscarClientePorCodigo();
+
 
 };
 

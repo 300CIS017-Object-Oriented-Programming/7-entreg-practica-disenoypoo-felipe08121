@@ -19,6 +19,7 @@ void mostrarMenuTienda(Tienda &tiendaMenu)
     cout << "7. Mostrar clientes y ventas.\n";
     cout << "8. Aumentar inventario de productos existentes.\n";
     cout << "9. Mostrar el total de las ventas\n";
+    cout << "10. Buscar informacion de los clientes por codigo\n";
     cout << "-1. Volver\n" << endl;
     cout << "Seleccione una opcion: ";
     cin >> opc;
@@ -62,6 +63,10 @@ void mostrarMenuTienda(Tienda &tiendaMenu)
         }
         case 9: {
          tiendaMenu.mostrarTotalVentasGlobal();
+         break;
+     }
+        case 10: {
+         tiendaMenu.buscarClientePorCodigo();
          break;
      }
         default: {

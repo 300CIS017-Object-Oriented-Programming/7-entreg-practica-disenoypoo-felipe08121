@@ -399,3 +399,32 @@ void Tienda::mostrarTotalVentasGlobal() {
     cout << "-> Total: $" << totalVentas << endl;
     cout << "========================================\n" << endl;
 }
+
+void Tienda::buscarClientePorCodigo() {
+    string codigo;
+    char opcion = 's';
+    bool bandera;
+
+    while ( opcion == 's' || opcion == 'S') {
+        mostrarClientes();
+        bandera = false;
+        cout << "\nIngrese el codigo del cliente cuya informacion desea buscar: ";
+        cin.ignore();
+        getline(cin, codigo);
+        for ( int i = 0 ; i < clientes.size(); i++) {
+            if (codigo == clientes[i]->getId()) {
+                cout << "-------Datos del cliente:  " << endl;
+                clientes[i]->mostrarDatos();
+                bandera = true;
+                break;
+            }
+        }
+        if (bandera == false) {
+            cout << "\nNo se encontro al cliente, intente otra vez. " << endl;
+        }
+
+        cout << "\nDesea continuar? (s/n): ";
+        cin >> opcion;
+    }
+
+}
